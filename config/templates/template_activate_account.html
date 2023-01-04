@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hola {{ user.first_name }},
+
+Porfavor haz click en el siguiente enlace para validar tu cuenta:
+
+{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

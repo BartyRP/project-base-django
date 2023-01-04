@@ -1,0 +1,31 @@
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        {% comment %} Configuración para mensajes {% endcomment %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-secondary" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Registrate Ahora</legend>
+                {{ form|crispy }}
+                Al registrar aceptas los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de Privacidad</a> de la plataforma.
+    
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Registrarse</button>
+                </div>
+            </fieldset>
+
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                ¿Ya tienes una cuenta? <a class="ml-2" href="/login">Ingresa aquí</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
